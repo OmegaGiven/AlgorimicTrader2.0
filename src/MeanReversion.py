@@ -72,3 +72,6 @@ calculate('TSLA.csv')
 
 print('testing AMD:')
 calculate('AMD.csv')
+
+print('testing RCL:')
+calculate('RCL.csv')

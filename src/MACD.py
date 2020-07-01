@@ -20,10 +20,6 @@ def macd(five_day, current_day):
         total += float(i)
     moving_average = total / 3
     if current_day > moving_average:
-        if margingains(moving_average, current_day):
-            return 'sell'
-        else:
-            return 'buy'
         return 'buy'
     else:
         return 'sell'
@@ -81,3 +77,6 @@ calculate('AMD.csv')
 
 print('testing IIPR:')
 calculate('IIPR.csv')
+
+print('testing RCL:')
+calculate('RCL.csv')

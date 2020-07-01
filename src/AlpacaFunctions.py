@@ -53,6 +53,3 @@ def main(symbol):
         print('buy')
         buy(symbol, float(api.get_account().buying_power) // api.get_barset('AMD', 'day', limit=1)['AMD'][0].c)
         print(trade_or_not)
-
-
-main('AMD')
