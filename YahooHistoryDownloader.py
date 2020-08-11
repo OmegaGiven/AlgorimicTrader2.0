@@ -1,6 +1,11 @@
 """
 provided by https://medium.com/@jouneidraza522/yahoo-finance-api-to-get-stocks-tickers-data-in-python-c49820249a18
 edited by OmegaGiven to ve more current.
+
+Stocks to look at :
+TMUS, GPRO, BAC, FIT, GE, GERN, IGC, OGEN, ZN, MTNB, NBEV, NEPT, AGRX, DTEA, VTVT, CGC, MSFT
+SQ, GRPN, AMD, NVDA, INTC, NTDOY, ATVI, CRON, IIPR, ACB, TSLA
+
 """
 
 from pandas_datareader import data as pdr
@@ -11,7 +16,12 @@ import yfinance as yf
 yf.pdr_override()
 # Tickers list
 # We can add and delete any ticker from the list to get desired ticker live data
-ticker_list = ['AMD']
+ticker_list = [
+    'AMD', 'TMUS', 'GPRO', 'BAC', 'FIT', 'GE', 'GERN', 'IGC', 'OGEN',
+    'ZN', 'MTNB', 'NBEV', 'NEPT', 'AGRX', 'DTEA', 'VTVT', 'CGC', 'MSFT',
+    'SQ', 'GRPN', 'AMD', 'NVDA', 'INTC', 'NTDOY', 'ATVI', 'CRON', 'IIPR',
+    'ACB', 'TSLA'
+]
 today = date.today()
 # We can get data by our choice by giving days bracket
 start_date = datetime.datetime(2019, 8, 11)
