@@ -14,12 +14,12 @@ def loader(filename):
         return daily_close
 
 
-def MeanReversion(five_day, current_day):
+def macd(five_day, current_day):
     total = 0
     for i in five_day:
         total += float(i)
-    moving_average = total / 5
-    if current_day < moving_average * .97:
+    moving_average = total / 3
+    if current_day > moving_average:
         return 'buy'
     else:
         return 'sell'
@@ -32,18 +32,19 @@ def margingains(moving_average, current_day):
         return False
 
 
+
 def calculate(filename):
     daily_close_list = loader(filename)
     # print(daily_close_list)
-    x = 20
+    x = 4
     status = 1
     account = 100
     print('start account: ' + str(account))
     buy_counter = 0
     sell_counter = 0
     while x < len(daily_close_list):
-        five_day_list = [daily_close_list[x-1], daily_close_list[x-2], daily_close_list[x-3], daily_close_list[x-4], daily_close_list[x-5]]
-        do_what = MeanReversion(five_day_list, daily_close_list[x])
+        five_day_list = [daily_close_list[x-1], daily_close_list[x-2], daily_close_list[x-3]]
+        do_what = macd(five_day_list, daily_close_list[x])
         if do_what == 'buy' and status == 0 and account >= daily_close_list[x]:
             account = account - daily_close_list[x]
             print('buy at: ' + str(daily_close_list[x]))
@@ -61,17 +62,21 @@ def calculate(filename):
     print('amount of sells: ' + str(sell_counter))
     print('account at day ' + str(x) + ': ' + str(account))
     print('amount gain: ' + str(account - (100 + daily_close_list[0])))
-    print('percent gain: ' + str((account - (100 + daily_close_list[0])) / daily_close_list[0] *100) + '\n\n\n')
+    print('percent gain: ' + str((account-(100 + daily_close_list[0])) / daily_close_list[0] *100) + '\n\n\n')
     # print('done')
 
+
 print('testing MSFT:')
-calculate('MSFT.csv')
+calculate('testFiles/MSFT.csv')
 
 print('testing TSLA:')
-calculate('TSLA.csv')
+calculate('testFiles/TSLA.csv')
 
 print('testing AMD:')
-calculate('AMD.csv')
+calculate('testFiles/AMD.csv')
+
+print('testing IIPR:')
+calculate('testFiles/IIPR.csv')
 
 print('testing RCL:')
-calculate('RCL.csv')
+calculate('testFiles/RCL.csv')

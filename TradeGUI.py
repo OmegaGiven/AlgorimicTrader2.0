@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import ttk
-import alpaca_trade_api as tradeapi
-from src import AlpacaFunctions
 from accountInfo import getAccount
 from menuFunctions import *
 
@@ -38,5 +36,8 @@ MACDbutton = tk.Button(trader, text='MACD', command=MACDalgorithm)
 MACDbutton.grid(row=0, column=1)
 
 
+'''
+packing the GUI to run
+'''
 tab_menu.pack(expand=1, fill='both')
 app.mainloop()
