@@ -14,14 +14,6 @@ import datetime
 import yfinance as yf
 
 yf.pdr_override()
-# Tickers list
-# We can add and delete any ticker from the list to get desired ticker live data
-ticker_list = [
-    'AMD', 'TMUS', 'GPRO', 'BAC', 'FIT', 'GE', 'GERN', 'IGC', 'OGEN',
-    'ZN', 'MTNB', 'NBEV', 'NEPT', 'AGRX', 'DTEA', 'VTVT', 'CGC', 'MSFT',
-    'SQ', 'GRPN', 'AMD', 'NVDA', 'INTC', 'NTDOY', 'ATVI', 'CRON', 'IIPR',
-    'ACB', 'TSLA'
-]
 today = date.today()
 # We can get data by our choice by giving days bracket
 start_date = datetime.datetime(2019, 8, 11)
@@ -43,5 +35,6 @@ def SaveData(df, filename):
 
 
 # This loop will iterate over ticker list, will pass one ticker to get data, and save that data as file.
-for tik in ticker_list:
-    getData(tik)
+def download(ticker_list):
+    for tik in ticker_list:
+        getData(tik)
